@@ -1,6 +1,8 @@
 package com.company;
 
+import java.math.BigInteger;
 import java.util.*;
+
 
 public class Main
 {
@@ -8,43 +10,23 @@ public class Main
     {
 	    Scanner scan = new Scanner(System.in);
         String a = scan.nextLine();
-        String[] line = a.split("");
+        String[] line = a.split(" ");
 
-       /* while (b != 0)
+        BigInteger a1 = new BigInteger(line[0]);
+        BigInteger a2 = new BigInteger(line[1]);
+        BigInteger a3 = new BigInteger(line[2]);
+
+        // если 1 > 2
+        if (a1.compareTo(a2) == 1)
         {
-            c++;
-            b/=10;
-        }*/
-
-        int[] arr = new int[line.length];
-
-        for (int i = 0; i < arr.length; i++)
-        {
-            arr[i] = Integer.parseInt(line[i]);
+            // 1 > 3
+            if (a1.compareTo(a3) == 1) System.out.println(a1);
+            else System.out.println(a3);
         }
-
-        int current_pos = 0;
-        int max_low_floor = 0;
-        int max_high_floor = 0;
-
-        for (int i = 0; i < arr.length; i++)
+        else if (a2.compareTo(a3) == 1)
         {
-            if (arr[i] == 1)
-            {
-                current_pos += 1;
-            }
-            else current_pos -= 1;
-
-            if (current_pos < 0)
-            {
-                if (Math.abs(max_low_floor) < Math.abs(current_pos)) max_low_floor = current_pos*-1;
-            }
-            else if (current_pos > 0)
-            {
-                if (max_high_floor < current_pos) max_high_floor = current_pos;
-            }
+            System.out.println(a2);
         }
-
-        System.out.println(max_high_floor + max_low_floor + 1);
+        else System.out.println(a3);
     }
 }
